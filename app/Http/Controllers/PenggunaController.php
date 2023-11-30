@@ -78,12 +78,24 @@ class PenggunaController extends Controller
         return redirect()->route('recyclebin.index')->with('sucess', 'data berhasil di-restore');
     }
 
-    public function login(Request $request) {
-      $request->validate([
-        'pass' => 'required',
-        'username' => 'required'
-      ]);
-      
-      $result = null;
+    public function login(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'pass' => 'required'
+            
+        ]);
+
+        $ceklogin = DB::select('SELECT from pengguna where username = :username and pass = :pass', [
+            'username' => $request -> username,
+            'pass' => $request -> pass
+        ]);
+
+        if ($ceklogin) {
+            return redirect()->route('karyawan.index')->with('success', 'Login berhasil');
+        } else {
+            return redirect()->back()->with('error', 'password atau username salah');
+        }
     }
+
 }
