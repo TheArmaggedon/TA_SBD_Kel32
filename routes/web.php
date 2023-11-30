@@ -43,7 +43,7 @@ Route::post('kartu_akses/hardDelete/{id}', [KartuAksesController::class, 'hardDe
 //route pengguna untuk proses login
 Route::get('pengguna', [PenggunaController::class, 'index'])->name('pengguna.index');
 Route::get('pengguna/add', [PenggunaController::class, 'create'])->name('pengguna.create');
-Route::post('pengguna/signup', [PenggunaController::class , 'store'])->name('pengguna.signup');
+Route::post('pengguna/signup', [PenggunaController::class , 'signup'])->name('pengguna.signup');
 Route::post('pengguna/softDelete/{id}', [PenggunaController::class, 'softDelete'])->name('pengguna.softDelete');
 Route::post('pengguna/hardDelete/{id}', [PenggunaController::class, 'hardDelete' ])->name('pengguna.hardDelete');
 //route ruangan
