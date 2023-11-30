@@ -77,4 +77,12 @@ class PenggunaController extends Controller
         DB::update('UPDATE pengguna SET terhapus = FALSE WHERE id_user = :id_user',['id_user' => $id]);
         return redirect()->route('recyclebin.index')->with('sucess', 'data berhasil di-restore');
     }
+
+    public function login(Request $request) {
+      $request->validate([
+        'pass' => 'required',
+        'username' => 'required'
+      ]);
+      
+    }
 }
