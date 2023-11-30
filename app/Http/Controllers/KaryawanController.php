@@ -13,7 +13,9 @@ class KaryawanController extends Controller
     }
     public function index(){
         $datas = DB::select('SELECT * from karyawan where terhapus is not null');
-        return view('karyawan.index');
+        return view('karyawan.index', [
+            'datas'=> $datas
+        ]);
     }
 
     public function store(Request $request) {
