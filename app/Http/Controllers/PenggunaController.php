@@ -84,5 +84,6 @@ class PenggunaController extends Controller
         'username' => 'required'
       ]);
       
+      $result = null;
     }
 }
