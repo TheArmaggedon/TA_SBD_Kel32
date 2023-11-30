@@ -3,6 +3,7 @@
 use App\Http\Controllers\KartuAksesController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\RecyclebinController;
 use App\Http\Controllers\RuanganController;
 use Illuminate\Support\Facades\Route;
 
