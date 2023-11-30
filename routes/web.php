@@ -39,14 +39,13 @@ Route::post('kartu_akses/update/{id}', [KartuAksesController::class, 'update'])-
 Route::post('kartu_akses/softDelete/{id}', [KartuAksesController::class, 'softDelete'])->name('kartu_akses.softDelete');
 Route::post('kartu_akses/hardDelete/{id}', [KartuAksesController::class, 'hardDelete' ])->name('kartu_akses.hardDelete');
 
+//route pengguna untuk proses login
 Route::get('pengguna', [PenggunaController::class, 'index'])->name('pengguna.index');
 Route::get('pengguna/add', [PenggunaController::class, 'create'])->name('pengguna.create');
-Route::post('pengguna/store', [PenggunaController::class , 'store'])->name('pengguna.store');
-Route::get('pengguna/edit/{id}', [PenggunaController::class, 'edit'])->name('pengguna.edit');
-Route::post('pengguna/update/{id}', [PenggunaController::class, 'update'])->name('pengguna.update');
+Route::post('pengguna/signup', [PenggunaController::class , 'store'])->name('pengguna.signup');
 Route::post('pengguna/softDelete/{id}', [PenggunaController::class, 'softDelete'])->name('pengguna.softDelete');
 Route::post('pengguna/hardDelete/{id}', [PenggunaController::class, 'hardDelete' ])->name('pengguna.hardDelete');
-
+//route ruangan
 Route::get('ruangan', [RuanganController::class, 'index'])->name('ruangan.index');
 Route::get('ruangan/add', [RuanganController::class, 'create'])->name('ruangan.create');
 Route::post('ruangan/store', [RuanganController::class , 'store'])->name('ruangan.store');
@@ -54,3 +53,6 @@ Route::get('ruangan/edit/{id}', [RuanganController::class, 'edit'])->name('ruang
 Route::post('ruangan/update/{id}', [RuanganController::class, 'update'])->name('ruangan.update');
 Route::post('ruangan/softDelete/{id}', [RuanganController::class, 'softDelete'])->name('ruangan.softDelete');
 Route::post('ruangan/hardDelete/{id}', [RuanganController::class, 'hardDelete' ])->name('ruangan.hardDelete');
+
+//route recycle-bin
+Route::get('/recyclebin/index', [RecyclebinController::class,'index'])->name('recyclebin.index');

@@ -13,7 +13,7 @@ class KartuAksesController extends Controller
     }
     public function index(){
         $datas = DB::select('SELECT * from kartu_akses where terhapus is not null');
-        return view('kartu_akses.index');
+        return view('kartu_akses.index')->with('data', $datas);
     }
 
     public function store(Request $request) {
