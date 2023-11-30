@@ -18,7 +18,7 @@ class PenggunaController extends Controller
         return view('pengguna.add');
     }
 
-    public function store(Request $request)
+    public function signup(Request $request)
     {
         $request->validate([
             'id_user' => 'required',
