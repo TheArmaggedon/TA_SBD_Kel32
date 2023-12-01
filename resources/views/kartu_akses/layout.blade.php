@@ -18,7 +18,8 @@
 <body class="antialiased">
     <nav class="navbar bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{route('clothes.index')}}">TA SBD - Kelompok 32</a>
+            <a class="navbar-brand" href="{{route('karyawan.index')}}">Karyawan</a>
+            <a class="navbar-brand" href="{{route('kartu_akses.index')}}">Kartu Akses</a>
         </div>
     </nav>
     <div class="container">

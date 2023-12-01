@@ -11,9 +11,20 @@ class KartuAksesController extends Controller
     {
         return view('kartu_akses.add');
     }
-    public function index(){
-        $datas = DB::select('SELECT * from kartu_akses where terhapus is not null');
-        return view('kartu_akses.index')->with('data', $datas);
+    public function index(Request $request){
+
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $datas = DB::select("SELECT * from kartu_akses where terhapus is not null AND (
+                no_kartu LIKE '%$searchTerm%' OR id_karyawan LIKE '%$searchTerm' OR hak_akses LIKE '%$searchTerm%' OR id_ruangan LIKE '%$searchTerm'
+                )");
+        }
+
+        else {
+            $datas = DB::select("SELECT * from kartu_akses where terhapus is not null");
+        }
+        
+        return view('kartu_akses.index')->with('datas', $datas);
     }
 
     public function store(Request $request) {
@@ -31,7 +42,7 @@ class KartuAksesController extends Controller
             'id_ruangan' => $request -> id_ruangan
         ]);
 
-        return redirect()->route('kartuakses.index')->with('success', 'Data kartu akses berhasil dimasukkan');
+        return redirect()->route('kartu_akses.index')->with('success', 'Data kartu akses berhasil dimasukkan');
 
 
     }

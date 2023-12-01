@@ -2,7 +2,42 @@
 
 @section('content')
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">TA SBD KELOMPOK 32</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('karyawan.index') }}">Data Karyawan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('ruangan.index') }}">Tabel Ruangan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('kartu_akses.index') }}">Tabel Kartu Akses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('recyclebin.index') }}">Recycle Bin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <h4 class="mt-5">Data Karyawan</h4>
+
+<div class="mt-3">
+    <form action="{{ route('karyawan.index') }}" method="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search...">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
+</div>
 
 <a href="{{ route('karyawan.create') }}" type="button" class="btn btn-success rounded-3">Tambah Data</a>
 <a href="{{ route('ruangan.index') }}" type="button" class="btn btn-success rounded-3">Tampilkan Tabel Ruangan</a>

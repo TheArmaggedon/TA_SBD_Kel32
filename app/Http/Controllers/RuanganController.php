@@ -8,10 +8,19 @@ use Illuminate\Support\Facades\DB;
 class RuanganController extends Controller
 {
     // Display a listing of the resource.
-    public function index()
+    public function index(Request $request)
     {
-        $ruangan = DB::select('SELECT * FROM ruangan');
-        return view('ruangan.index', ['ruangan' => $ruangan]);
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $datas = DB::select("SELECT * from ruangan where terhapus = 0 AND (
+                id_ruangan LIKE '%$searchTerm%' OR nama_ruangan LIKE '%$searchTerm' OR level_akses LIKE '%$searchTerm%'
+                )");
+        }
+
+        else {
+            $datas = DB::select("SELECT * from ruangan where terhapus is not null");
+        }
+        return view("ruangan.index")->with("datas", $datas);
     }
 
     public function create()
