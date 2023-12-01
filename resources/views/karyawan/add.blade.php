@@ -1,4 +1,4 @@
-@extends('clothes.layout')
+@extends('karyawan.layout')
 @section('content')
 
 @if($errors->any())
@@ -13,26 +13,21 @@
 
 <div class="card mt-4">
     <div class="card-body">
-        <h5 class="card-title fw-bolder mb-3">Tambah Pakaian</h5>
-        <form method="post" action="{{route('clothes.store')}}">
+        <h5 class="card-title fw-bolder mb-3">Data Karyawan</h5>
+        <form method="post" action="{{route('karyawan.store')}}">
             @csrf
             <div class="mb-3">
-                <label for="clothes_id" class="form-label">ID Pakaian</label>
-                <input type="text" class="form-control" id="clothes_id" name="clothes_id">
+                <label for="id_karyawan" class="form-label">ID Karyawan</label>
+                <input type="text" class="form-control" id="id_karyawan" name="id_karyawan">
             </div>
             <div class="mb-3">
-                <label for="FK_vendor_id" class="form-label">Vendor ID</label>
-                <input type="text" class="form-control" id="FK_vendor_id" name="FK_vendor_id">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama">
             </div>
             <div class="mb-3">
-                <label for="clothes_type" class="form-label">Tipe Pakaian</label>
-                <input type="text" class="form-control" id="clothes_type" name="clothes_type">
+                <label for="alamat" class="form-label">Alamat</label>
+                <input type="text" class="form-control" id="alamat" name="alamat">
             </div>
-            <div class="mb-3">
-                <label for="clothes_price" class="form-label">Harga Pakaian</label>
-                <input type="text" class="form-control" id="clothes_price" name="clothes_price">
-            </div>
-            
             <div class="text-center">
                 <input type="submit" class="btn btn-primary" value="Tambah" />
             </div>

@@ -29,7 +29,7 @@ Route::post('karyawan/store', [KaryawanController::class , 'store'])->name('kary
 Route::get('karyawan/edit/{id}', [KaryawanController::class, 'edit'])->name('karyawan.edit');
 Route::post('karyawan/update/{id}', [KaryawanController::class, 'update'])->name('karyawan.update');
 Route::post('karyawan/softDelete/{id}', [KaryawanController::class, 'softDelete'])->name('karyawan.softDelete');
-Route::post('karyawan/hardDelete/{id}', [KaryawanController::class, 'hardDelete' ])->name('karyawan.hardDelete');
+
 
 //Route kartu akses
 Route::get('kartu_akses', [KartuAksesController::class, 'index'])->name('kartu_akses.index');
@@ -57,3 +57,4 @@ Route::post('ruangan/hardDelete/{id}', [RuanganController::class, 'hardDelete' ]
 
 //route recycle-bin
 Route::get('/recyclebin/index', [RecyclebinController::class,'index'])->name('recyclebin.index');
+Route::post('karyawan/hardDelete/{id}', [KaryawanController::class, 'hardDelete' ])->name('karyawan.hardDelete');

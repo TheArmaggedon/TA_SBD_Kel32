@@ -12,7 +12,7 @@ class KaryawanController extends Controller
         return view('karyawan.add');
     }
     public function index(){
-        $datas = DB::select('SELECT * from karyawan where terhapus is not null');
+        $datas = DB::select('SELECT * from karyawan where terhapus = 0');
         return view('karyawan.index', [
             'datas'=> $datas
         ]);
@@ -47,10 +47,12 @@ class KaryawanController extends Controller
             'nama'=>'required',
             'alamat' => 'required'
         ]);
-        DB::update('UPDATE clothes SET id_karyawan = :id_karyawan, nama =:nama, alamat = : alamat where id_karyawan = :id',[
-            'id_karyawan' => $id,
+        DB::update('UPDATE karyawan SET id_karyawan = :id_karyawan, nama = :nama, alamat = :alamat where id_karyawan = :id',[
+            'id' => $id,
+            'id_karyawan' => $request-> id_karyawan,
             'nama' => $request->nama,
             'alamat' => $request ->alamat,
+            
         ]);
 
         return redirect()->route('karyawan.index')->with('success','data karyawan berhasil diubah');
