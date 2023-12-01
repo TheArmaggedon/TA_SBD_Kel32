@@ -38,14 +38,14 @@ Route::post('kartu_akses/store', [KartuAksesController::class , 'store'])->name(
 Route::get('kartu_akses/edit/{id}', [KartuAksesController::class, 'edit'])->name('kartu_akses.edit');
 Route::post('kartu_akses/update/{id}', [KartuAksesController::class, 'update'])->name('kartu_akses.update');
 Route::post('kartu_akses/softDelete/{id}', [KartuAksesController::class, 'softDelete'])->name('kartu_akses.softDelete');
-Route::post('kartu_akses/hardDelete/{id}', [KartuAksesController::class, 'hardDelete' ])->name('kartu_akses.hardDelete');
+
 
 //route pengguna untuk proses login
 Route::get('pengguna', [PenggunaController::class, 'index'])->name('pengguna.index');
 Route::get('pengguna/add', [PenggunaController::class, 'create'])->name('pengguna.create');
 Route::post('pengguna/signup', [PenggunaController::class , 'signup'])->name('pengguna.signup');
 Route::post('pengguna/softDelete/{id}', [PenggunaController::class, 'softDelete'])->name('pengguna.softDelete');
-Route::post('pengguna/hardDelete/{id}', [PenggunaController::class, 'hardDelete' ])->name('pengguna.hardDelete');
+
 //route ruangan
 Route::get('ruangan', [RuanganController::class, 'index'])->name('ruangan.index');
 Route::get('ruangan/add', [RuanganController::class, 'create'])->name('ruangan.create');
@@ -53,8 +53,10 @@ Route::post('ruangan/store', [RuanganController::class , 'store'])->name('ruanga
 Route::get('ruangan/edit/{id}', [RuanganController::class, 'edit'])->name('ruangan.edit');
 Route::post('ruangan/update/{id}', [RuanganController::class, 'update'])->name('ruangan.update');
 Route::post('ruangan/softDelete/{id}', [RuanganController::class, 'softDelete'])->name('ruangan.softDelete');
-Route::post('ruangan/hardDelete/{id}', [RuanganController::class, 'hardDelete' ])->name('ruangan.hardDelete');
 
 //route recycle-bin
 Route::get('/recyclebin/index', [RecyclebinController::class,'index'])->name('recyclebin.index');
 Route::post('karyawan/hardDelete/{id}', [KaryawanController::class, 'hardDelete' ])->name('karyawan.hardDelete');
+Route::post('ruangan/hardDelete/{id}', [RuanganController::class, 'hardDelete' ])->name('ruangan.hardDelete');
+Route::post('pengguna/hardDelete/{id}', [PenggunaController::class, 'hardDelete' ])->name('pengguna.hardDelete');
+Route::post('kartu_akses/hardDelete/{id}', [KartuAksesController::class, 'hardDelete' ])->name('kartu_akses.hardDelete');
