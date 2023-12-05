@@ -78,7 +78,7 @@ class KaryawanController extends Controller
     public function hardDelete($id)
     {
         DB::delete('DELETE FROM karyawan WHERE id_karyawan = :id_karyawan ', ['id_karyawan' => $id]);
-        return redirect()->route('karyawan.index')->with('success', 'Data berhasil dihapus secara permanen');
+        return redirect()->route('recyclebin.index')->with('success', 'Data berhasil dihapus secara permanen');
 
     }
     public function restore($id)

@@ -70,7 +70,7 @@ class PenggunaController extends Controller
 
     public function hardDelete($id) {
         DB::delete('DELETE FROM pengguna WHERE id_user = :id_user ',['id_user' => $id]);
-        return redirect()->route('pengguna.index')->with('success','Data berhasil dihapus secara permanen');
+        return redirect()->route('recyclebin.index')->with('success','Data berhasil dihapus secara permanen');
 
     }
     public function restore($id) {
@@ -86,7 +86,7 @@ class PenggunaController extends Controller
             
         ]);
 
-        $ceklogin = DB::select('SELECT from pengguna where username = :username and pass = :pass', [
+        $ceklogin = DB::select('SELECT * from pengguna where username = :username and pass = :pass', [
             'username' => $request -> username,
             'pass' => $request -> pass
         ]);

@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 //Route karyawan
 Route::get('karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
@@ -41,8 +39,9 @@ Route::post('kartu_akses/softDelete/{id}', [KartuAksesController::class, 'softDe
 
 
 //route pengguna untuk proses login
-Route::get('pengguna', [PenggunaController::class, 'index'])->name('pengguna.index');
+Route::get('/', [PenggunaController::class, 'index'])->name('pengguna.index');
 Route::get('pengguna/add', [PenggunaController::class, 'create'])->name('pengguna.create');
+Route::post('pengguna/login', [PenggunaController::class,'login'])->name('pengguna.login');
 Route::post('pengguna/signup', [PenggunaController::class , 'signup'])->name('pengguna.signup');
 Route::post('pengguna/softDelete/{id}', [PenggunaController::class, 'softDelete'])->name('pengguna.softDelete');
 
@@ -57,6 +56,10 @@ Route::post('ruangan/softDelete/{id}', [RuanganController::class, 'softDelete'])
 //route recycle-bin
 Route::get('/recyclebin/index', [RecyclebinController::class,'index'])->name('recyclebin.index');
 Route::post('karyawan/hardDelete/{id}', [KaryawanController::class, 'hardDelete' ])->name('karyawan.hardDelete');
+Route::post('karyawan/restore/{id}', [KaryawanController::class, 'restore'])->name('karyawan.restore');
 Route::post('ruangan/hardDelete/{id}', [RuanganController::class, 'hardDelete' ])->name('ruangan.hardDelete');
+Route::post('ruangan/restore/{id}', [RuanganController::class, 'restore'])->name('ruangan.restore');
 Route::post('pengguna/hardDelete/{id}', [PenggunaController::class, 'hardDelete' ])->name('pengguna.hardDelete');
 Route::post('kartu_akses/hardDelete/{id}', [KartuAksesController::class, 'hardDelete' ])->name('kartu_akses.hardDelete');
+Route::post('kartu_akses/restore/{id}', [KartuAksesController::class, 'restore'])->name('kartu_akses.restore');
+

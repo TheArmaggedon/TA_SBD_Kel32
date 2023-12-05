@@ -18,7 +18,7 @@ class RuanganController extends Controller
         }
 
         else {
-            $datas = DB::select("SELECT * from ruangan where terhapus is not null");
+            $datas = DB::select("SELECT * from ruangan where terhapus = 0");
         }
         return view("ruangan.index")->with("datas", $datas);
     }
@@ -50,8 +50,8 @@ class RuanganController extends Controller
 
     public function edit($id)
     {
-        $ruangan = DB::table('ruangan')->where('id_ruangan', $id)->first();
-        return view('ruangan.edit', ['ruangan' => $ruangan]);
+        $data = DB::table('ruangan')->where('id_ruangan', $id)->first();
+        return view('ruangan.edit', ['data' => $data]);
     }
 
     public function update(Request $request, $id)
@@ -74,13 +74,13 @@ class RuanganController extends Controller
     }
 
     public function softDelete($id){
-        DB::update('UPDATE ruangan SET terhapus = TRUE WHERE id_ruangan = :id_ruangan', ['id_ruangan' => $id]);
+        DB::update('UPDATE ruangan SET terhapus = 1 WHERE id_ruangan = :id_ruangan', ['id_ruangan' => $id]);
         return redirect()->route('ruangan.index')->with('success','Data ruangan dipindahkan ke recycle bin');
     }
 
     public function hardDelete($id) {
         DB::delete('DELETE FROM ruangan WHERE id_ruangan = :id_ruangan ',['id_ruangan' => $id]);
-        return redirect()->route('ruangan.index')->with('success','Data ruangan dihapus secara permanen');
+        return redirect()->route('recyclebin.index')->with('success','Data ruangan dihapus secara permanen');
 
     }
     public function restore($id) {
