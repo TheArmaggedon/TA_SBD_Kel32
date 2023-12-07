@@ -16,15 +16,22 @@ class KartuAksesController extends Controller
         if ($request->has('search')) {
             $searchTerm = $request->input('search');
             $datas = DB::select("SELECT * from kartu_akses where terhapus = 0 AND (
-                no_kartu LIKE '%$searchTerm%' OR id_karyawan LIKE '%$searchTerm' OR hak_akses LIKE '%$searchTerm%' OR id_ruangan LIKE '%$searchTerm'
+                no_kartu LIKE '%$searchTerm%' OR id_karyawan LIKE '%$searchTerm%' OR hak_akses LIKE '%$searchTerm%' OR id_ruangan LIKE '%$searchTerm'
                 )");
+            $datajoineds = DB::select("SELECT * from kartu_akses kak INNER JOIN karyawan k ON kak.id_karyawan = k.id_karyawan INNER JOIN ruangan r ON r.id_ruangan = kak.id_ruangan WHERE k.nama_karyawan LIKE 
+             '%$searchTerm%' OR r.nama_ruangan LIKE '%$searchTerm%");
         }
 
         else {
             $datas = DB::select("SELECT * from kartu_akses where terhapus = 0");
+            $datajoineds = DB::select("SELECT * from kartu_akses kak INNER JOIN karyawan k ON kak.id_karyawan = k.id_karyawan INNER JOIN ruangan r ON r.id_ruangan = kak.id_ruangan");
         }
+
         
-        return view('kartu_akses.index')->with('datas', $datas);
+        return view('kartu_akses.index', [
+            'datas' => $datas,
+            'datajoineds' =>$datajoineds
+        ] );
     }
 
     public function store(Request $request) {
@@ -84,8 +91,5 @@ class KartuAksesController extends Controller
         return redirect()->route('recyclebin.index')->with('sucess', 'data kartu akses berhasil di-restore');
     }
 
-    public function join() {
-        DB::select('SELECT * from kartu_akses kak INNER JOIN karyawan k ON kak.id_karyawan = k.id_karyawan INNER JOIN ruangan r ON r.id_ruangan = kak.id_ruangan');
-        return view('joined.index');
-    }
+    
 }

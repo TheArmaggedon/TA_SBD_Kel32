@@ -102,4 +102,37 @@
         @endforeach
     </tbody>
 </table>
+
+<table class="table table-hover mt-2">
+    <thead>
+        <tr>
+            <th>No Kartu</th>
+            <th>Nama Karyawan</th>
+            <th>Hak Akses</th>
+            <th>Nama Ruangan</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($datajoineds as $data1)
+        <tr>
+            <td>{{ $data1->no_kartu }}</td>
+            <td>{{ $data1->nama }}</td>
+            <td>{{ $data1->hak_akses }}</td>
+            <td>{{ $data1->nama_ruangan }}</td>
+            <td>
+                <form action="{{ route('kartu_akses.softDelete', $data1->no_kartu) }}" method="POST">
+                    @csrf
+                    @method('POST') 
+                    
+                    <button type="submit" class="btn btn-danger">
+                        Hapus
+                    </button>
+                </form>
+
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 @stop
