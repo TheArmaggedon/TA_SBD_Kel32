@@ -1,4 +1,4 @@
-@extends('recyclebin.layout')
+@extends('challenge.layout')
 
 @section('content')
 
@@ -37,7 +37,16 @@
     </div>
 </nav>
 
-<h4 class="mt-5">Recycle Bin Karyawan</h4>
+<div class="mt-3">
+    <form action="{{ route('challenge.index') }}" method="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search...">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
+</div>
+
+<h4 class="mt-5">Tabel Karyawan</h4>
 
 <table class="table table-hover mt-2">
     <thead>
@@ -54,37 +63,12 @@
             <td>{{ $data->id_karyawan }}</td>
             <td>{{ $data->nama }}</td>
             <td>{{ $data->alamat }}</td>
-            <td>
-                <form action="{{ route('karyawan.hardDelete', $data->id_karyawan) }}" method="POST">
-                    @csrf
-                    @method('POST') 
-                    
-                    <button type="submit" class="btn btn-danger">
-                        Hapus
-                    </button>
-                </form>
-
-                <form action="{{ route('karyawan.restore', $data->id_karyawan) }}" method="POST">
-                    @csrf
-                    @method('POST') 
-                    
-                    <button type="submit" class="btn btn-danger">
-                        Restore
-                    </button>
-                </form>
-
-            
-            </div>
-
-            
-
-            </td>
         </tr>
         @endforeach
     </tbody>
 </table>
 
-<h4 class="mt-5">Recycle Bin Kartu Akses</h4>
+<h4 class="mt-5">Tabel Kartu Akses</h4>
 
 <table class="table table-hover mt-2">
     <thead>
@@ -93,7 +77,6 @@
             <th>ID Karyawan</th>
             <th>Hak Akses</th>
             <th>ID Ruangan</th>
-
         </tr>
     </thead>
     <tbody>
@@ -104,35 +87,12 @@
             <td>{{ $data1->hak_akses }}</td>
             <td>{{ $data1->id_ruangan }}</td>
             <td>
-                <form action="{{ route('kartu_akses.hardDelete', $data1->no_kartu) }}" method="POST">
-                    @csrf
-                    @method('POST') {{-- Use 'POST' method for hard delete --}}
-                    
-                    <button type="submit" class="btn btn-danger">
-                        Hapus
-                    </button>
-                </form>
-                <form action="{{ route('kartu_akses.restore', $data1->no_kartu) }}" method="POST">
-                    @csrf
-                    @method('POST') {{-- Use 'POST' method for restore --}}
-                    
-                    <button type="submit" class="btn btn-danger">
-                        Restore
-                    </button>
-                </form>
-            
-
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-
-
-
-
-<h4 class="mt-5">Recycle Bin Ruangan</h4>
-
+<h4 class="mt-5">Tabel Ruangan</h4>
 <table class="table table-hover mt-2">
     <thead>
         <tr>
@@ -148,27 +108,7 @@
             <td>{{ $data2->id_ruangan }}</td>
             <td>{{ $data2->nama_ruangan }}</td>
             <td>{{ $data2->level_akses }}</td>
-            <td>
-                
-                <form action="{{ route('ruangan.hardDelete', $data2->id_ruangan) }}" method="POST">
-                    @csrf
-                    @method('POST') 
-                    
-                    <button type="submit" class="btn btn-danger">
-                        Hapus
-                    </button>
-                </form>
-
-                <form action="{{ route('ruangan.restore', $data2->id_ruangan) }}" method="POST">
-                    @csrf
-                    @method('POST') 
-                    
-                    <button type="submit" class="btn btn-danger">
-                        Restore
-                    </button>
-                </form>
-
-
+            <td>   
             </td>
         </tr>
         @endforeach

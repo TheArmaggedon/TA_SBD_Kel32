@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\KartuAksesController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PenggunaController;
@@ -62,4 +63,7 @@ Route::post('ruangan/restore/{id}', [RuanganController::class, 'restore'])->name
 Route::post('pengguna/hardDelete/{id}', [PenggunaController::class, 'hardDelete' ])->name('pengguna.hardDelete');
 Route::post('kartu_akses/hardDelete/{id}', [KartuAksesController::class, 'hardDelete' ])->name('kartu_akses.hardDelete');
 Route::post('kartu_akses/restore/{id}', [KartuAksesController::class, 'restore'])->name('kartu_akses.restore');
+
+//route challenge
+Route::get('/challenge/index', [ChallengeController::class, 'index'])->name('challenge.index');
 

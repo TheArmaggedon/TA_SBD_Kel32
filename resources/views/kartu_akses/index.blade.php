@@ -23,6 +23,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('recyclebin.index') }}">Recycle Bin</a>
                 </li>
+                <li class="nav-item">
+                    <a class ="nav-link" href="{{route('challenge.index')}}">General Search</a>
+                </li>
             </ul>
         </div>
     </div>
